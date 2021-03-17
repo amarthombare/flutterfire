@@ -164,13 +164,13 @@ static NSObject<FlutterPluginRegistrar> *_registrar;
         }];
   } else if ([@"deleteInstanceID" isEqualToString:method]) {
     [[FIRInstanceID instanceID] deleteIDWithHandler:^void(NSError *_Nullable error) {
-      if (error.code != 0) {
-        NSLog(@"deleteInstanceID, error: %@", error);
-        result([NSNumber numberWithBool:NO]);
-      } else {
+     // if (error.code != 0) {
+      //  NSLog(@"deleteInstanceID, error: %@", error);
+      //  result([NSNumber numberWithBool:NO]);
+     // } else {
         [[UIApplication sharedApplication] unregisterForRemoteNotifications];
         result([NSNumber numberWithBool:YES]);
-      }
+    //  }
     }];
   } else if ([@"autoInitEnabled" isEqualToString:method]) {
     BOOL value = [[FIRMessaging messaging] isAutoInitEnabled];
